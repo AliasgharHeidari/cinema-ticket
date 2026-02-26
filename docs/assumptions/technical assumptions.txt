@@ -1,0 +1,14 @@
+Cinema ticket purchasing system :
+
+1. All requests are through API
+2. Records will be stored in postgres DATABASE
+3. system will be deployed on localhost
+4. system generated a paymant link after reservations
+
+
+
+Routs:
+:3000/sessions        #show session list
+:3000/sessions/seat/:session-id       #available seats for each session
+:3000/sessions/{session-id}/reservations      #reserve a seat
+:3000/payment/example-generated-link      #payment link
