@@ -3,9 +3,9 @@ package model
 import "time"
 
 type Session struct {
-	ID     int         `json:"id"`
-	RoomID int         `json:"roomId"`
-	Date   SessionDate `json:"date"`
+	ID     int         `gorm:"primaryKey" json:"id"`
+	RoomID int         `gorm:"index" json:"roomId"`
+	Date   SessionDate `gorm:"embedded" json:"date"`
 }
 
 type SessionDate struct {
@@ -14,15 +14,11 @@ type SessionDate struct {
 }
 
 type CreateSessionRequest struct {
-	RoomId int 
-	Date   SessionDate
+	RoomID int         `json:"roomId"`
+	Date   SessionDate `json:"date"`
 }
-
-
-
 
 func (s *Session) Duration() time.Duration {
 	return s.Date.End.Sub(s.Date.Start)
 
 }
-
