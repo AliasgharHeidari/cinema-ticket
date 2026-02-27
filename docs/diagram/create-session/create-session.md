@@ -13,24 +13,15 @@
 ```go
 Name: Create-session
 Method: POST
-Url: http://127.0.0.1:9898/session
+Url: http://127.0.0.1:3000/session
 Param:
 Body:
     {
-      "movie" : {
-           "Name" : string,
-           "Year" : int64,
-           "Genre" : string,
-           "Director" : string
-       },
-       "room" : {
-           "Name" : string,
-           "Number" : int64
-       },
-       "time" : {
-           "Start" : time.Time,
-           "End" : time.Time ,
-           "Duration" : string
+
+       "roomId" : int, 
+       "date" : {
+           "start" : time.Time,
+           "end" : time.Time ,
        },
     }
 Errors:

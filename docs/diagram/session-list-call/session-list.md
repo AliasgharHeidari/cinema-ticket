@@ -14,7 +14,7 @@
 ```go
 Name: get-session-list
 Method: Get
-Url: http://127.0.0.1:3000/sessions
+Url: http://127.0.0.1:3000/session
 Params:
 Header:
 Body:

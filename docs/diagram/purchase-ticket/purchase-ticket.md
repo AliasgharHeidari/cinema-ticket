@@ -19,7 +19,8 @@ Params:
 Header:
 Body:
     {
-        "mobile-number" : (string),
+        "name" : (string),
+        "mobile-number" : (string)
     }
 Errors:
     - code: 500
@@ -36,9 +37,12 @@ Responses:
           "messsage" : "purchase compeleted successfully",
           "ticket" : {
             "movie" : "example",
-            "room"  : 2,
-            "row"   : 3,
-            "seat"  : 4
+            "room"  : {
+              "number": 2,
+              "row"   : 3,
+              "seat"  : 4
+
+            },
           }
         }
 ```
