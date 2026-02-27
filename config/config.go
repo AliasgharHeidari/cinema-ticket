@@ -9,7 +9,7 @@ import (
 
 type Config struct {
 	Server  ServerConfig   `json:"server"`
-	Databse DatabaseConfig `json:"database"`
+	Database DatabaseConfig `json:"database"`
 }
 
 type ServerConfig struct {
@@ -18,18 +18,9 @@ type ServerConfig struct {
 }
 
 type DatabaseConfig struct {
-	DSN DSNConfig `json:"dsn"`
+	DSN string `json:"dsn"`
 }
 
-type DSNConfig struct {
-	Host     string `yaml:"host"`
-	User     string `yaml:"user"`
-	Password string `yaml:"password"`
-	Port     int    `yaml:"port"`
-	DBName   string `yaml:"dbname"`
-	SSLMode  string `yaml:"sslmode"`
-	TimeZone string `yaml:"timezone"`
-}
 
 func Load(path string) (*Config, error) {
 	data, err := os.ReadFile(path)
@@ -46,16 +37,8 @@ func Load(path string) (*Config, error) {
 	return &Cfg, nil
 }
 
-func (d DSNConfig) String() string {
-	return fmt.Sprintf(
-		"host=%s user=%s password=%s dbname=%s port=%d sslmode=%s TimeZone=%s",
-		d.Host,
-		d.User,
-		d.Password,
-		d.DBName,
-		d.Port,
-		d.SSLMode,
-		d.TimeZone,
-	)
+
+func (s ServerConfig) Address() string {
+	return fmt.Sprintf("%s:%s", s.Host, s.Port)
 
 }

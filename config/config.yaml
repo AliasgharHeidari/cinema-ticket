@@ -1,14 +1,6 @@
 server:
   port: "3000"
-  host: 0.0.0.0
-
+  host: "0.0.0.0"
 
 database:
-  dsn:
-    host: localhost
-    user: postgres
-    password: "1234"
-    port: 5432
-    dbname: cinema
-    sslmode: disable
-    timezone: Asia/Tehran
+  dsn: "postgres://postgres:1234@localhost:5432/cinema?sslmode=disable"
