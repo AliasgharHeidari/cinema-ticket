@@ -8,16 +8,17 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func CreateSession(c *fiber.Ctx) error {
-	var Input model.CreateSessionRequest
-	err := c.BodyParser(&Input)
+
+
+func CreateMovie(c *fiber.Ctx) error {
+	var input model.CreateMovieRequest
+	err := c.BodyParser(&input)
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "invalid request body",
 		})
 	}
-
-	session, err := service.CreateSession(Input)
+	movie, err := service.CreateMovie(input)
 	if errors.Is(err, service.ErrInternal) {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error": "internal error, please try again later",
@@ -25,7 +26,7 @@ func CreateSession(c *fiber.Ctx) error {
 	}
 
 	return c.Status(fiber.StatusCreated).JSON(fiber.Map{
-		"message":    "session created successfully",
-		"session-id": session.ID,
+		"message":  "movie created successfully",
+		"movie-id": movie.ID,
 	})
 }
